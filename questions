@@ -1,0 +1,11 @@
+1- Como se comunicar com o arduino através do processing?
+Em relação a nossa dúvida de como se comunicar com o arduino pelo processing percebi que o erro de comunicação estava relacionado a nomeclatura das portas
+como suspeitavámos, pois o vídeo que estavamos usando de referência era com windows. Achei em um forúm a resolução desse problema. Vamos utilizar esse .txt 
+para guardar as referências e relator o caminho que percorremos para tirar nossas dúvidas.
+Solução: myPort = new Serial(this, "/dev/ttyACM0", 9600); -> nomeclatura utilizada no linux a seguir "dev/ttyACM XX" onde XX é o número da porta[1].
+[1] 
+
+
+
+References:
+[1] https://ubuntuforums.org/archive/index.php/t-1941803.html
