@@ -3,7 +3,7 @@
 #include<string.h>
 #define tam 10 //tamanho dos bytes enviados
 
-//Completa o vetor recebido com zeros a esquerda ate atingir 8 caracteres
+//Completa o vetor recebido com zeros a esquerda ate atingir 10 caracteres
 void desloca_direita(char* msgf){
 	
 	while(strlen(msgf) < tam){
@@ -28,7 +28,6 @@ void desloca_direita(char* msgf){
 // de nome parecido
 void criptografa(char* msgf, int pot1f, int pot2f, int pausef, int resetf){
 	int num = resetf + 10*pausef + 100*pot2f + 1000000*pot1f;
-	//desloca_direita(msgf);
 	itoa(num, msgf, 10);
 }
 
