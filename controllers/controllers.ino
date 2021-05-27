@@ -63,6 +63,5 @@ void desloca_direita(char* msgf){
 // de nome parecido
 void criptografa(char* msgf, int pot1f, int pot2f, int pausef, int resetf){
   int num = resetf + 10*pausef + 100*pot2f + 100000*pot1f;
-  //desloca_direita(msgf);
   itoa(num, msgf, 10);
 }
