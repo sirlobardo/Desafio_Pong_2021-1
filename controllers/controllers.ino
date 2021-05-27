@@ -1,5 +1,5 @@
 //nao usar print para mensagens, pois isso atrapalha no envio dos dados via Serial
-#define tam 8 //tamanho dos bytes enviados
+#define tam 10 //tamanho dos bytes enviados
 
 const int pot_left = A0, pot_right = A2;
 const int  pause_but = 9, reset_but = 10;  //Botoes de 'pause' e 'reset' 
@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-  char msg[tam+1];
+  char msg[tam+1] = {'\0'}; //Inicia um vetor char vazio
   
   int pos_left = analogRead(pot_left);
   int pos_right = analogRead(pot_right);
@@ -38,25 +38,27 @@ int read_bar_left(){
   return pos_left;
 }
 
-// Completa o vetor de caracteres com zeros a esquerda ate que seu tamanho atinja 8 caracteres
+// Completa o vetor de caracteres com zeros a esquerda ate que seu tamanho atinja 10 caracteres
 void desloca_direita(char* msgf){
   
   while(strlen(msgf) < tam){
   
-    for(int i = strlen(msgf); i>0; i--){
+  for(int i = strlen(msgf); i>0; i--){
     msgf[i] = msgf[i-1];
   }
   msgf[0] = '0';
-  msgf[tam] = '\0';
+  msgf[strlen(msgf)] = '\0';
   }
+  msgf[tam] = '\0';
+  
   /*printf("%d\n", strlen(msgf));
   for(int i = 0; i < strlen(msgf); i++){
     printf("%d: %c\n", i, msgf[i]);
   }*/
 }
 
-// Esta funcao cria um vetor de caracteres de 8 numeros (na forma de char e nao como int)
-// Formado respectivamente por: leitura do potenciometro 1 e 2 (0-255), botao de pausa e botao de reset (0-1)
+// Esta funcao cria um vetor de caracteres de 10 numeros (na forma de char e nao como int)
+// Formado respectivamente por: leitura do potenciometro 1 e 2 (0-1023), botao de pausa e botao de reset (0-1)
 // a terminacao 'f' no nome de algumas variaveis foi usado para as diferenciarr das variaveis globais
 // de nome parecido
 void criptografa(char* msgf, int pot1f, int pot2f, int pausef, int resetf){
