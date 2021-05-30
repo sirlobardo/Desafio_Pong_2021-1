@@ -16,7 +16,7 @@ void loop() {
   int pos_right = analogRead(pot_right);
 
   //Como os botoes foram ligados em pull_up, o seu estado nao precionado e representado
-  //Pela leitura 1. Quando precionado o valor lido se torna 0.
+  //Pela leitura 1. Quando pressionado o valor lido se torna 0.
   //A inversão do valor lido por meio do operador '!' torna o valor mais intuitivo
   int pause = !digitalRead(pause_but);
   int reset = !digitalRead(reset_but);

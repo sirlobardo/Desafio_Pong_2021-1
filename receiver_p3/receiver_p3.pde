@@ -1,4 +1,4 @@
-String com_usada = "/dev/ttyACM0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -11,14 +11,15 @@ float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2; //variáveis para represen
 int size_ball = 10; //Tamanho da bola
 float x,y, sp_x, sp_y;// Variaveis para trabalhar com as coordenadas e velocidades da bola em cada eixo
 int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes
-        // Variáveis para trabalhar com as coord da bola na tela.
-float init_x,init_y;
+        
+float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
 boolean start = true;
 boolean init_start = true;
+boolean pausar = false;
 int points_1 = 0, points_2 = 0;
 // --- Definindo o void setup() ---
 void setup(){
-  Porta = new Serial(this, com_usada, 9600);    // Aqui estamos realizando a comunicação serial, troque o "COM4" pela porta COM que você está utilizando
+    Porta = new Serial(this, com_usada, 9600);    // Aqui estamos realizando a comunicação serial, troque o "COM4" pela porta que você está utilizando
   Porta.bufferUntil('\n');  // As informações que ele irá armazenar vai ser atualizada a cada pular de linha.
   //delay(1000);
   size(1000, 600);
@@ -34,19 +35,22 @@ void draw(){
     noCursor();
     pot_left = position[0];
     pot_right = position[1];
+    pause = position[2];
+    reset = position [3];
     //pause = position[2];
     //reset = position[3];
-    //println(position[0], " ",position[1], " ",position[2], " ",position[3]);
+   //println(position[0], " ",position[1], " ",position[2], " ",position[3]);
+
     
-    
+  
+
       // Quando a pessoa iniciar o jogo, acontece tudo que está dentro do if
   if(start){
     textSize(100);
     background(0);
     // Função que desenha o campo de jogo na tela.
     fill(255);
- 
-    
+  
     if(init_start){  // Local onde a bola deve iniciar na tela.
       x = init_x;
       y = init_y;
@@ -55,15 +59,38 @@ void draw(){
       bounce = 0;
       init_start = !init_start;
     }
+    
     scoreboard();
     // posicionamento dos jogadores
     //posiziona_pad();
     bars_moviment();
     // movimentação da bola
     ball();
+    println(sp_x, sp_y);
     
     }
     
+// função dos pushbuttons
+  if(position[2] == 1 && start){
+       pausar = !pausar;
+       sp_x = 0;
+       sp_y = 0;
+/*if(position[2] == 1 && pausar == true){
+       x = x + sp_x;
+       y = y + sp_y;
+       
+       
+       }*/
+       
+       
+      }
+      
+    
+  if(position[3] == 1 && start) {
+      init_start = !init_start;
+      points_1 = 0;
+      points_2 = 0;
+  }
 }
 
 
@@ -176,3 +203,15 @@ void scoreboard(){
   text(points_1,(width/2)+100,100);
   text(points_2,(width/2)-100,100);
 }
+//Funcão sem funcionar ainda
+/*
+void Pushbuttons(){
+  if(pause == 1 && start){
+   init_start = false; 
+  }
+  if(reset == 1 && start) {
+    start = !start;
+    start = true;
+  }
+  
+}*/
