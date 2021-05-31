@@ -39,10 +39,10 @@ void draw(){
     reset = position [3];
     //pause = position[2];
     //reset = position[3];
-   //println(position[0], " ",position[1], " ",position[2], " ",position[3]);
-
+   println(position[0], " ",position[1], " ",position[2], " ",position[3]);
     
-  
+    Pushbuttons();
+   
 
       // Quando a pessoa iniciar o jogo, acontece tudo que está dentro do if
   if(start){
@@ -66,31 +66,11 @@ void draw(){
     bars_moviment();
     // movimentação da bola
     ball();
-    println(sp_x, sp_y);
+   // println(sp_x, sp_y);
     
     }
     
-// função dos pushbuttons
-  if(position[2] == 1 && start){
-       pausar = !pausar;
-       sp_x = 0;
-       sp_y = 0;
-/*if(position[2] == 1 && pausar == true){
-       x = x + sp_x;
-       y = y + sp_y;
-       
-       
-       }*/
-       
-       
-      }
-      
-    
-  if(position[3] == 1 && start) {
-      init_start = !init_start;
-      points_1 = 0;
-      points_2 = 0;
-  }
+
 }
 
 
@@ -134,29 +114,33 @@ void bars_moviment(){
   rect(pos_x_bar2, pos_y_bar2, width_bar, height_bar, 50);
 }
 
-
+float speedx, speedy; 
 void ball() {
   fill(255);
   stroke(255);
   ellipse(x,y,size_ball,size_ball);
+  
   //Determina a tragetória linear da bola
   x = x + sp_x;
   y = y + sp_y;
-  
+  //if(sp_x!=0)speedx = sp_x;
+  //if(sp_y!=0)speedy = sp_y;
   //Colidir com os lados superior e inferior do campo
-  if(y<10+size_ball/2 || y>height - (10+size_ball/2)) sp_y = -sp_y; // se y<15 ou se y>600 - 15 velocidade contrária
-  
-  
+  if(y<10+size_ball/2 || y>height - (10+size_ball/2)){ // se y<15 ou se y>600 - 15 velocidade contrária
+  sp_y = -sp_y; 
+      //if(sp_y!=0)speedy = sp_y;
+  }
   //colidir com as hastes  
   if((sp_x<0 &&x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
     if(bounce<20){
       sp_x = -1.15*sp_x;
+      //if(sp_x!=0)speedx = sp_x;
       bounce++;
       println("bounce");
     }
     else{
       sp_x = -sp_x;
-      
+      //if(sp_x!=0)speedx = sp_x;
       }
   }
   int var = check();
@@ -204,14 +188,24 @@ void scoreboard(){
   text(points_2,(width/2)-100,100);
 }
 //Funcão sem funcionar ainda
-/*
 void Pushbuttons(){
-  if(pause == 1 && start){
-   init_start = false; 
-  }
-  if(reset == 1 && start) {
-    start = !start;
-    start = true;
-  }
+// função dos pushbuttons
   
-}*/
+      
+    
+  if(position[3] == 1 && start) {
+      init_start = !init_start;
+      points_1 = 0;
+      points_2 = 0;
+      
+  }
+   if(position[2] == 1 && start){
+     pausar = !pausar;
+      
+   
+    }
+    
+      
+   
+  
+}
