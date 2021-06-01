@@ -1,5 +1,5 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-String com_usada = "COM3";
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "COM3";
 
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -150,8 +150,16 @@ void ball() {
       //if(sp_y!=0)speedy = sp_y;
   }
   //colidir com as hastes  
+  // Se (velocidade no eixo x<0 e x<20+largura da haste + metade da bola e x>20+metade da 
+  //largura da haste e y>= a metade da posição da haste no eixo y e y <= a posição da 
+  //haste no eixo y + metade da altura da haste)
+  //OU
+  // Se (velocidade no eixo x>0 e x>largura da tela - (20 + largura da haste + metade da 
+  //bola) e x<largura da tela - (20 + metade da largura da barra) e y>=posição da haste2  
+  //no eixo y - metade da altura da haste e y<=posição da haste2 no eixo y + metade da 
+  //altura da haste 
   if((sp_x<0 && x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
-    if(bounce<20){
+    if(bounce<20){                                                    
       ball_spd_angular(sp_x, sp_y);
       sp_x = 1.15*sp_x;
       //if(sp_x!=0)speedx = sp_x;
