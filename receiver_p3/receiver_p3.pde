@@ -20,6 +20,9 @@ int bounce; //Variável para saber quando a tela está rebatendo nas bordas e na
         
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
 
+//Jogar para encontrar valores ideias
+int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro para as bordas
+
 // Variáveis de estado do jogo
 boolean start = true;
 boolean init_start = true;
@@ -34,7 +37,7 @@ void setup(){
   size(1000, 600);
   init_x = width/2;   // Coordenada inicial X centralizada no meio
   init_y = height/2;
-  //delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
+  delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
 }
 
 // --- Definindo o void draw() ---
@@ -147,21 +150,86 @@ void ball() {
       //if(sp_y!=0)speedy = sp_y;
   }
   //colidir com as hastes  
-  if((sp_x<0 &&x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
+  if((sp_x<0 && x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
     if(bounce<20){
-      sp_x = -1.15*sp_x;
+      ball_spd_angular(sp_x, sp_y);
+      sp_x = 1.15*sp_x;
       //if(sp_x!=0)speedx = sp_x;
       bounce++;
       println("bounce");
     }
     else{
-      sp_x = -sp_x;
+      //sp_x = -sp_x;
       //if(sp_x!=0)speedx = sp_x;
       }
   }
   int var = check();
   if(var != 0) score(var);
 
+}
+
+//Retorna +1 se o numero for positivo ou zero
+//Retorna -1 se o numero for negativo
+int positive_or_negative(float num){
+  if(num < 0)
+    return -1;
+  else
+    return 1;
+}
+
+
+// Essa função divide cada barra em 8 segmentos e identifica em qual deles ocorreu a colisão
+// Os angulos correspondentes se encontram no vetor angulos[]
+// Sua lógica de funcionamento parte do princípio de conservação da energia: a velocidade (em módulo) antes
+// e após a colisão deve ser a mesma. Logo, a mudança do angulo ocorre na variação dos valores de velocidade
+// x e y, obtidos através de um triângulo retângulo
+void ball_spd_angular(float ant_sp_x, float ant_sp_y){
+  
+  float modulo = sqrt(pow(ant_sp_x, 2) + pow(ant_sp_y, 2));   //Modulo da velocidade anterior
+  if(sp_x<0){            //Barra da esquerda
+    if(y>=pos_y_bar1-height_bar/8 && y<=pos_y_bar1 + height_bar/8){
+      //(2 segmentos centrais)
+      sp_y = cos(radians(angulos[0])) * modulo;
+      sp_x = sin(radians(angulos[0])) * modulo;
+    } else if(y>=pos_y_bar1 - height_bar*2/8 && y<=pos_y_bar1 + height_bar*2/8){
+      //(1 segmento acima e outro abaixo do central)
+      sp_x = cos(radians(angulos[1])) * modulo; 
+      sp_y = sin(radians(angulos[1])) * modulo;
+    } else if(y>=pos_y_bar1 - height_bar*3/8 && y<=pos_y_bar1 + height_bar*3/8){
+      //(2 segmentos acima e abaixo do central)
+      sp_x = cos(radians(angulos[2])) * modulo;
+      sp_y = sin(radians(angulos[2])) * modulo;
+    } else if(y>=pos_y_bar1 - height_bar*4/8 && y<=pos_y_bar1 + height_bar*4/8){
+      //(segmentos das bordas da barra)
+      sp_x = cos(radians(angulos[3])) * modulo; 
+      sp_y = sin(radians(angulos[3])) * modulo;
+    }
+    
+    sp_y = positive_or_negative(ant_sp_y) * sp_y;    //'Recupera' o sinal inicial da velocidade y, já que todos os valores dos calculos são sempre positivos
+  } else if (sp_x>0){    //Barra da direita
+    if(y>=pos_y_bar2-height_bar/8 && y<=pos_y_bar2 + height_bar/8){
+      //(2 segmentos centrais)
+      sp_y = cos(radians(angulos[0])) * modulo;
+      sp_x = sin(radians(angulos[0])) * modulo;
+    } else if(y>=pos_y_bar2 - height_bar*2/8 && y<=pos_y_bar2 + height_bar*2/8){
+      //(1 segmento acima e abaixo do central)
+      sp_x = cos(radians(75)) * modulo;
+      sp_y = sin(radians(75)) * modulo;
+    } else if(y>=pos_y_bar2 - height_bar*3/8 && y<=pos_y_bar2 + height_bar*3/8){
+      //(2 segmentos acima e abaixo do central)
+      sp_x = cos(radians(60)) * modulo;
+      sp_y = sin(radians(60)) * modulo;
+    } else if(y>=pos_y_bar2 - height_bar*4/8 && y<=pos_y_bar2 + height_bar*4/8){
+      //(segmentos das bordas da barra)
+      sp_x = cos(radians(45)) * modulo;  
+      sp_y = sin(radians(45)) * modulo;
+    }
+    
+    sp_x = -sp_x;   //Deve ser negativo para inverter o sentido da bola (em direção ao lado esquerdo do campo)
+    sp_y = positive_or_negative(ant_sp_y) * sp_y;    //'Recupera' o sinal inicial da velocidade y, já que todos os valores dos calculos são sempre positivos
+  }
+  
+  
 }
 
 // Função que controla o sentido de movimentação da bola no inicio do jogo.
