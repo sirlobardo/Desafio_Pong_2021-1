@@ -1,6 +1,6 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-//String com_usada = "COM3";
-
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "COM0";
+String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -27,8 +27,13 @@ int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro
 boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
-int points_1 = 0, points_2 = 0;
+int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
 int ant_pause;
+
+//variáveis de design
+int R = 0, G =95, B = 96; //cor de fundo
+int tam_txt = 100; //tamanho do texto
+
 
 // --- Definindo o void setup() ---
 void setup(){
@@ -44,7 +49,7 @@ void setup(){
 // --- Definindo o void draw() ---
 void draw(){
     
-    background(0, 95, 96);
+    background(R, G, B);
     noCursor();
     // 1 1 1 1 1
     //Salva os valores recebidos nas suas respectivas variaves(globais)
@@ -68,8 +73,8 @@ void draw(){
 if(!pausar){ 
       // Quando a pessoa iniciar o jogo, acontece tudo que está dentro do if
   if(start){
-    textSize(100);
-    background(0, 95, 96);
+    textSize(tam_txt);
+    background(R, G, B);
     // Função que desenha o campo de jogo na tela.
     fill(255);
   
@@ -254,40 +259,46 @@ float rnd_sign(){
 }
 
 int check(){
-  // a função confere tem o objetivo de verificar se a bola ainda está dentro do campo.
+  // a função check tem o objetivo de verificar se a bola ainda está dentro do campo.
   // Utilizando a variável x que possui a posição da bola no eixo horizontal podemos verificar se a bola passou por uma das barras da seguinte forma:
   // Comparando as variáveis com a posição das hastes no eixo x (que não é alterada em nenhum momento durante a partida), caso ela seja maior 
   // no caso da haste da direita(pos_x_bar2), ou menor no caso da haste da esquerda(pos_x_bar1)
   // podemos retornar um valor e definir quem deve receber a pontuação ou apenas continuar o jogo.
   
-  if(x < pos_x_bar1) return -1;
-  else if(x > pos_x_bar2) return 1;
+  if(x < pos_x_bar1) return 1;
+  else if(x > pos_x_bar2) return 2;
   else return 0;
   
 }
 
 void score(int var){
- if (var == -1){
+ if (var == 1){
    points_1++;
   }
-  else if(var == 1){
+  else if(var == 2){
    points_2++;
   }
+  verify_winners();
   x = width/2;
   y = height/2;
 }
 
 void scoreboard(){
-  text(points_1,(width/2)+100,100);
-  text(points_2,(width/2)-100,100);
+  text(points_1,(width/2)+100,tam_txt);
+  text(points_2,(width/2)-100,tam_txt);
 }
+
+void reset(){
+   init_start = !init_start;
+   points_1 = 0;
+   points_2 = 0;
+}
+
 // função dos pushbuttons
 void Pushbuttons(){
   
   if(reset == 1 && start) {
-      init_start = !init_start;
-      points_1 = 0;
-      points_2 = 0;
+  reset();
       
   }
    if(pause == 1 && start){
@@ -297,10 +308,40 @@ void Pushbuttons(){
     }
     if(pausar == true){
      String x = "Pause";
-     textSize(100);
+     textSize(tam_txt);
      text(x, 350, 330);
    }
-      
-   
+}
+
+int verify_winners(){
+  if(points_1 == points_MAX){
+    winner(1);
+    reset();
+    return 1;
+  }else if(points_2 == points_MAX){
+    winner(2);
+    reset();
+    return 2;
+  }else{
+  return 0;
+  }
+}
+
+void winner(int n){
+  if(n == 1){
+     
+     String title_winner = "O Player 1 venceu!";
+     textSize(tam_txt);
+     text(title_winner, 350, 330);
+     delay(5000);
+  }
+  else{
+     
+     String title_winner = "O Player 2 venceu!";
+     textSize(tam_txt);
+     text(title_winner, 350, 330);
+     delay(5000);
+  }
   
+  //adicionar função menu posteriormente
 }
