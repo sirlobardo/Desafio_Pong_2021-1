@@ -1,4 +1,6 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "COM3";
+
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -6,40 +8,55 @@ Serial Porta;                // Porta COM que o Arduino está conectado.
 // Variáveis para armazenar os valores recebidos pela Serial    
 int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'new int' foi usado para impedir que o vetor seja inicializado nulo
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
+
+// Variáveis para as barras
 int height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
 float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2; //variáveis para representar a posicao das barras
+
+// Variáveis para abola
 int size_ball = 10; //Tamanho da bola
 float x,y, sp_x, sp_y;// Variaveis para trabalhar com as coordenadas e velocidades da bola em cada eixo
 int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes
         
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
+
+// Variáveis de estado do jogo
 boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
 int points_1 = 0, points_2 = 0;
+
 // --- Definindo o void setup() ---
 void setup(){
-    Porta = new Serial(this, com_usada, 9600);    // Aqui estamos realizando a comunicação serial, troque o "COM4" pela porta que você está utilizando
+  Porta = new Serial(this, com_usada, 9600);    // Aqui estamos realizando a comunicação serial, troque o "COM4" pela porta que você está utilizando
   Porta.bufferUntil('\n');  // As informações que ele irá armazenar vai ser atualizada a cada pular de linha.
   //delay(1000);
   size(1000, 600);
   init_x = width/2;   // Coordenada inicial X centralizada no meio
   init_y = height/2;
-  
+  //delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
 }
 
 // --- Definindo o void draw() ---
 void draw(){
-    //Salva os valores recebidos nas suas respectivas variaves(globais)
+    
     background(0);
     noCursor();
-    pot_left = position[0];
-    pot_right = position[1];
-    pause = position[2];
-    reset = position [3];
-    //pause = position[2];
-    //reset = position[3];
-   println(position[0], " ",position[1], " ",position[2], " ",position[3]);
+    
+    //Salva os valores recebidos nas suas respectivas variaves(globais)
+    //Caso rde um erro o 'Try' impede que o código 'trave'
+    try{
+      pot_left = position[0];
+      pot_right = position[1];
+      pause = position[2];
+      reset = position [3];
+      println(position[0], " ",position[1], " ",position[2], " ",position[3]);
+    } catch (NullPointerException e){
+      e.printStackTrace();  //Mensagem de erro
+    } catch (ArrayIndexOutOfBoundsException e){
+      e.printStackTrace();  //Mensagem de erro
+    }
+    
     
     Pushbuttons();
    
@@ -62,7 +79,6 @@ void draw(){
     
     scoreboard();
     // posicionamento dos jogadores
-    //posiziona_pad();
     bars_moviment();
     // movimentação da bola
     ball();
@@ -193,13 +209,13 @@ void Pushbuttons(){
   
       
     
-  if(position[3] == 1 && start) {
+  if(reset == 1 && start) {
       init_start = !init_start;
       points_1 = 0;
       points_2 = 0;
       
   }
-   if(position[2] == 1 && start){
+   if(pause == 1 && start){
      pausar = !pausar;
       
    
