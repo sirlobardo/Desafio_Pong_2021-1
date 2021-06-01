@@ -1,5 +1,5 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-//String com_usada = "COM3";
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "COM3";
 
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -28,6 +28,7 @@ boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
 int points_1 = 0, points_2 = 0;
+int ant_pause;
 
 // --- Definindo o void setup() ---
 void setup(){
@@ -45,9 +46,10 @@ void draw(){
     
     background(0, 95, 96);
     noCursor();
-    
+    // 1 1 1 1 1
     //Salva os valores recebidos nas suas respectivas variaves(globais)
     //Caso rde um erro o 'Try' impede que o código 'trave'
+    ant_pause = pause;
     try{
       pot_left = position[0];
       pot_right = position[1];
@@ -292,9 +294,9 @@ void Pushbuttons(){
       
   }
    if(pause == 1 && start){
-     pausar = !pausar;
-     
-   
+     if(pause != ant_pause){
+       pausar = !pausar;
+     }
     }
     
       

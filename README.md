@@ -7,6 +7,8 @@ Este repositório foi criado para o desenvolvimento do desafio da AV3 da discipl
 
 # Instalação
 
+# Barema
 
 
-*"Pi Pi Ding Ding Ommm tu du di du di un"* - R2D2
+
+*“Fazer ou não fazer. Tentativa não há”* - Mestre Yoda
