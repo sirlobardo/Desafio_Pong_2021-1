@@ -1,5 +1,5 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-String com_usada = "COM3";
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "COM3";
 
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -281,12 +281,9 @@ void scoreboard(){
   text(points_1,(width/2)+100,100);
   text(points_2,(width/2)-100,100);
 }
-//Funcão sem funcionar ainda
-void Pushbuttons(){
 // função dos pushbuttons
+void Pushbuttons(){
   
-      
-    
   if(reset == 1 && start) {
       init_start = !init_start;
       points_1 = 0;
@@ -298,7 +295,11 @@ void Pushbuttons(){
        pausar = !pausar;
      }
     }
-    
+    if(pausar == true){
+     String x = "Pause";
+     textSize(100);
+     text(x, 350, 330);
+   }
       
    
   
