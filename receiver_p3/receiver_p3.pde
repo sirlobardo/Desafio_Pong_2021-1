@@ -43,7 +43,7 @@ void setup(){
 // --- Definindo o void draw() ---
 void draw(){
     
-    background(0);
+    background(0, 95, 96);
     noCursor();
     
     //Salva os valores recebidos nas suas respectivas variaves(globais)
@@ -53,7 +53,7 @@ void draw(){
       pot_right = position[1];
       pause = position[2];
       reset = position [3];
-      println(position[0], " ",position[1], " ",position[2], " ",position[3]);
+      //println(position[0], " ",position[1], " ",position[2], " ",position[3]);
     } catch (NullPointerException e){
       e.printStackTrace();  //Mensagem de erro
     } catch (ArrayIndexOutOfBoundsException e){
@@ -63,11 +63,11 @@ void draw(){
     
     Pushbuttons();
    
-
+if(!pausar){ 
       // Quando a pessoa iniciar o jogo, acontece tudo que está dentro do if
   if(start){
     textSize(100);
-    background(0);
+    background(0, 95, 96);
     // Função que desenha o campo de jogo na tela.
     fill(255);
   
@@ -85,11 +85,11 @@ void draw(){
     bars_moviment();
     // movimentação da bola
     ball();
-   // println(sp_x, sp_y);
+    println(sp_x, sp_y);
     
     }
     
-
+}
 }
 
 
@@ -293,7 +293,7 @@ void Pushbuttons(){
   }
    if(pause == 1 && start){
      pausar = !pausar;
-      
+     
    
     }
     
