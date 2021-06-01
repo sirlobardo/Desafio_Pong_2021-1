@@ -27,7 +27,7 @@ int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro
 boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
-int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
+int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
