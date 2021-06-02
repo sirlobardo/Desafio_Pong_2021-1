@@ -1,6 +1,6 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
 //String com_usada = "COM0";
-String com_usada = "/dev/ttyACM0";
+//String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -33,6 +33,7 @@ int ant_pause;
 //variáveis de design
 int R = 0, G =95, B = 96; //cor de fundo
 int tam_txt = 100; //tamanho do texto
+PFont exfont;
 
 
 // --- Definindo o void setup() ---
@@ -44,6 +45,9 @@ void setup(){
   init_x = width/2;   // Coordenada inicial X centralizada no meio
   init_y = height/2;
   delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
+  exfont = createFont("ArcadeClassic", 60, true); //Fonte escolhida para o jogo
+  textFont(exfont);
+  
 }
 
 // --- Definindo o void draw() ---
@@ -140,7 +144,7 @@ void bars_moviment(){
   rect(pos_x_bar2, pos_y_bar2, width_bar, height_bar, 50);
 }
 
-float speedx, speedy; 
+
 void ball() {
   fill(255);
   stroke(255);
@@ -149,12 +153,11 @@ void ball() {
   //Determina a tragetória linear da bola
   x = x + sp_x;
   y = y + sp_y;
-  //if(sp_x!=0)speedx = sp_x;
-  //if(sp_y!=0)speedy = sp_y;
+
   //Colidir com os lados superior e inferior do campo
   if(y<10+size_ball/2 || y>height - (10+size_ball/2)){ // se y<15 ou se y>600 - 15 velocidade contrária
   sp_y = -sp_y; 
-      //if(sp_y!=0)speedy = sp_y;
+      
   }
   //colidir com as hastes  
   // Se (velocidade no eixo x<0 e x<20+largura da haste + metade da bola e x>20+metade da 
@@ -169,18 +172,22 @@ void ball() {
     if(bounce<20){                                                    
       ball_spd_angular(sp_x, sp_y);
       sp_x = 1.15*sp_x;
-      //if(sp_x!=0)speedx = sp_x;
       bounce++;
       println("bounce");
     }
     else{
-      //sp_x = -sp_x;
-      //if(sp_x!=0)speedx = sp_x;
+      sp_x = -sp_x;
+      
       }
   }
+ 
   int var = check();
   if(var != 0) score(var);
-
+  
+  //reseta a velocidade da bola a cada ponto
+  if(var == 1 || var == 2){
+     init_start = !init_start;
+    }
 }
 
 //Retorna +1 se o numero for positivo ou zero
@@ -284,8 +291,10 @@ void score(int var){
 }
 
 void scoreboard(){
+
   text(points_1,(width/2)+100,tam_txt);
   text(points_2,(width/2)-100,tam_txt);
+  
 }
 
 void reset(){
