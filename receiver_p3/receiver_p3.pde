@@ -1,6 +1,6 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
 //String com_usada = "COM0";
-String com_usada = "/dev/ttyACM0";
+//String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -297,7 +297,7 @@ void score(int var){
 }
 
 void scoreboard(){
-
+  textAlign(CENTER);
   text(points_1,(width/2)+100,tam_txt);
   text(points_2,(width/2)-100,tam_txt);
   
@@ -385,9 +385,9 @@ void make_white_ball(){
   color_ball[2] = 255;
 }
 
-void make_red_ball(int intesity){
+void make_red_ball(int intensity){
   if(color_ball[1] != 0){
-    color_ball[1] -= intesity;
-    color_ball[2] -= intesity;
+    color_ball[1] -= intensity;
+    color_ball[2] -= intensity;
   }
 }
