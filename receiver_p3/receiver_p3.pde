@@ -1,6 +1,6 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
 //String com_usada = "COM0";
-//String com_usada = "/dev/ttyACM0";
+String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -11,7 +11,7 @@ int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na t
 
 // Variáveis para as barras
 int height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
-float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2; //variáveis para representar a posicao das barras
+float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2, winner = 0; //variáveis para representar a posicao das barras
 
 // Variáveis para abola
 int size_ball = 10; //Tamanho da bola
@@ -27,14 +27,15 @@ int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro
 boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
-int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
+boolean win = false;
+int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
 int R = 0, G =95, B = 96; //cor de fundo
 int tam_txt = 100; //tamanho do texto
 PFont exfont;
-
+String tit;
 
 // --- Definindo o void setup() ---
 void setup(){
@@ -70,7 +71,7 @@ void draw(){
     } catch (ArrayIndexOutOfBoundsException e){
       e.printStackTrace();  //Mensagem de erro
     }
-    
+    verify_winners();
     
     Pushbuttons();
    
@@ -301,7 +302,16 @@ void reset(){
    init_start = !init_start;
    points_1 = 0;
    points_2 = 0;
+   winner = 0;
 }
+void pause(){
+  if(pause != ant_pause){
+        println(winner);
+       pausar = !pausar;
+       
+     }
+}
+
 
 // função dos pushbuttons
 void Pushbuttons(){
@@ -311,46 +321,60 @@ void Pushbuttons(){
       
   }
    if(pause == 1 && start){
-     if(pause != ant_pause){
-       pausar = !pausar;
-     }
+      pause();
     }
-    if(pausar == true){
+    if(pausar == true && win == false){
      String x = "Pause";
-     textSize(tam_txt);
-     text(x, 350, 330);
+     textAlign(CENTER);
+     text(x, width/2, height/2);
    }
+   
+   if(win == true){
+     if(winner == 1){
+     tit = "PLAYER 1 WINS";}
+     if(winner == 2){
+     tit = "PLAYER 2 WINS";}
+     textSize(tam_txt);
+     textAlign(CENTER);
+     text(tit, width/2, height/2);
+     pause();  
+     }
 }
 
 int verify_winners(){
   if(points_1 == points_MAX){
-    winner(1);
-    reset();
-    return 1;
+    winner = 1;
+    win = true;
+    pausar = true;
+    Pushbuttons();
   }else if(points_2 == points_MAX){
-    winner(2);
-    reset();
-    return 2;
-  }else{
+    winner = 2;
+    win = true;
+    pausar = true;
+    Pushbuttons();
+  }
   return 0;
-  }
-}
-
-void winner(int n){
-  if(n == 1){
-     
-     String title_winner = "O Player 1 venceu!";
-     textSize(tam_txt);
-     text(title_winner, 350, 330);
-     delay(5000);
-  }
-  else{
-     
-     String title_winner = "O Player 2 venceu!";
-     textSize(tam_txt);
-     text(title_winner, 350, 330);
-     delay(5000);
-  }
   
-  //adicionar função menu posteriormente
 }
+/*
+void keyPressed(){
+  if(key == 'r') reset();
+  while(winner == 1){
+    String title_winner = "O Player 1 venceu!";
+    textSize(tam_txt);
+    text(title_winner, 350, 330);
+    pause();
+  }
+    while(winner == 2){
+    String title_winner = "O Player 2 venceu!";
+    textSize(tam_txt);
+    text(title_winner, 350, 330);
+    pause();
+  }
+}
+*/
+void winner(){
+
+
+}
+    
