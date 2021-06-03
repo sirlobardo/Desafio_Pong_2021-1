@@ -10,14 +10,14 @@ int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'ne
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
 
 // Variáveis para as barras
-int height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
+float height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
 float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2, winner = 0; //variáveis para representar a posicao das barras
 
 // Variáveis para abola
 int size_ball = 10; //Tamanho da bola
-float x,y, sp_x, sp_y;// Variaveis para trabalhar com as coordenadas e velocidades da bola em cada eixo
+float x,y, sp_x, sp_y, lim_sp_s = 9.3, lim_sp_i = -9.3;// Variaveis para trabalhar com as coordenadas e velocidades da bola em cada eixo
 int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes
-        
+int color_ball[] = new int[3];        
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
 
 //Jogar para encontrar valores ideias
@@ -28,7 +28,7 @@ boolean start = true;
 boolean init_start = true;
 boolean pausar = false;
 boolean win = false;
-int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
+int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
@@ -48,7 +48,7 @@ void setup(){
   delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
   exfont = createFont("ArcadeClassic", 60, true); //Fonte escolhida para o jogo
   textFont(exfont);
-  
+  make_white_ball();
 }
 
 // --- Definindo o void draw() ---
@@ -147,8 +147,9 @@ void bars_moviment(){
 
 
 void ball() {
-  fill(255);
-  stroke(255);
+  //make_white_ball();
+  fill(color_ball[0], color_ball[1], color_ball[2]);
+  //stroke(255, 255, 255);
   ellipse(x,y,size_ball,size_ball);
   
   //Determina a tragetória linear da bola
@@ -170,15 +171,17 @@ void ball() {
   //no eixo y - metade da altura da haste e y<=posição da haste2 no eixo y + metade da 
   //altura da haste 
   if((sp_x<0 && x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
-    if(bounce<20){                                                    
+    if(bounce < 20){                                                    
+      
+      sp_x = sp_x * 1.3; 
       ball_spd_angular(sp_x, sp_y);
-      sp_x = 1.15*sp_x;
       bounce++;
+      make_red_ball(30);
       println("bounce");
     }
     else{
       sp_x = -sp_x;
-      
+      ball_spd_angular(sp_x, sp_y);
       }
   }
  
@@ -273,8 +276,8 @@ int check(){
   // no caso da haste da direita(pos_x_bar2), ou menor no caso da haste da esquerda(pos_x_bar1)
   // podemos retornar um valor e definir quem deve receber a pontuação ou apenas continuar o jogo.
   
-  if(x < pos_x_bar1) return 1;
-  else if(x > pos_x_bar2) return 2;
+  if(x < 0) return 1;
+  else if(x > width) return 2;
   else return 0;
   
 }
@@ -282,9 +285,11 @@ int check(){
 void score(int var){
  if (var == 1){
    points_1++;
+   make_white_ball();
   }
   else if(var == 2){
    points_2++;
+   make_white_ball();
   }
   verify_winners();
   x = width/2;
@@ -303,6 +308,7 @@ void reset(){
    points_1 = 0;
    points_2 = 0;
    winner = 0;
+   make_white_ball();
 }
 void pause(){
   if(pause != ant_pause){
@@ -315,7 +321,7 @@ void pause(){
 
 // função dos pushbuttons
 void Pushbuttons(){
-  
+  fill(255);
   if(reset == 1 && start) {
   reset();
       
@@ -373,8 +379,15 @@ void keyPressed(){
   }
 }
 */
-void winner(){
-
-
+void make_white_ball(){
+  color_ball[0] = 255;
+  color_ball[1] = 255;
+  color_ball[2] = 255;
 }
-    
+
+void make_red_ball(int intesity){
+  if(color_ball[1] != 0){
+    color_ball[1] -= intesity;
+    color_ball[2] -= intesity;
+  }
+}
