@@ -1,10 +1,11 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-String com_usada = "COM3";
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "COM3";
 //String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
-Serial Porta;                // Porta COM que o Arduino está conectado.
-
+Serial Porta;     // Porta COM que o Arduino está conectado.
+import processing.sound.*;
+SoundFile song;
 // Variáveis para armazenar os valores recebidos pela Serial    
 int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'new int' foi usado para impedir que o vetor seja inicializado nulo
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
@@ -51,6 +52,9 @@ void setup(){
   make_white_ball();
   Pushbuttons();
   delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
+  song = new SoundFile(this, "Arcade Login theme.mp3");
+  song.play();
+  song.loop();
 }
 
 // --- Definindo o void draw() ---
