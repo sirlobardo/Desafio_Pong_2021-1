@@ -1,5 +1,5 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-//String com_usada = "COM3";
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "COM3";
 //String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -22,7 +22,7 @@ int color_ball[] = new int[3];
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
 
 //Jogar para encontrar valores ideias
-int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro para as bordas.
+int angulos[] = {90, 75, 60, 45};  //Angulos de rebatimento, ordenados do centro para as bordas.
 
 // Variáveis de estado do jogo
 boolean start = true;
@@ -178,7 +178,7 @@ void ball() {
   //no eixo y - metade da altura da haste e y<=posição da haste2 no eixo y + metade da 
   //altura da haste 
   if((sp_x<0 && x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
-    if(bounce < 20){                                                    
+    if(bounce < 8){                                                    
       
       sp_x = sp_x * 1.3; 
       ball_spd_angular(sp_x, sp_y);
@@ -187,7 +187,7 @@ void ball() {
       println("bounce");
     }
     else{
-      sp_x = -sp_x;
+      //sp_x = -sp_x;
       ball_spd_angular(sp_x, sp_y);
       }
   }
