@@ -1,6 +1,6 @@
 //String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-//String com_usada = "COM0";
-String com_usada = "/dev/ttyACM0";
+String com_usada = "COM3";
+//String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -46,11 +46,11 @@ void setup(){
   size(1000, 600);
   init_x = width/2;   // Coordenada inicial X centralizada no meio
   init_y = height/2;
-  delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
-  exfont = createFont("ArcadeClassic", 60, true); //Fonte escolhida para o jogo
+  exfont = createFont("ArcadeClassic.TTF", 60, true); //Fonte escolhida para o jogo
   textFont(exfont);
   make_white_ball();
   Pushbuttons();
+  delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
 }
 
 // --- Definindo o void draw() ---
