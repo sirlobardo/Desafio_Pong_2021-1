@@ -1,6 +1,6 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
 //String com_usada = "COM0";
-//String com_usada = "/dev/ttyACM0";
+String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;                // Porta COM que o Arduino está conectado.
@@ -13,27 +13,28 @@ int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na t
 float height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
 float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2, winner = 0; //variáveis para representar a posicao das barras
 
-// Variáveis para abola
-int size_ball = 10; //Tamanho da bola
+// Variáveis para abola.
+int size_ball = 10; //Tamanho da bola.
 float x,y, sp_x, sp_y, lim_sp_s = 9.3, lim_sp_i = -9.3;// Variaveis para trabalhar com as coordenadas e velocidades da bola em cada eixo
-int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes
+int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes.
 int color_ball[] = new int[3];        
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
 
 //Jogar para encontrar valores ideias
-int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro para as bordas
+int angulos[] = {90, 60, 50, 40};  //Angulos de rebatimento, ordenados do centro para as bordas.
 
 // Variáveis de estado do jogo
 boolean start = true;
 boolean init_start = true;
-boolean pausar = false;
-boolean win = false;
-int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
+boolean const_pause = true;//constante que irá ajudar acessar o painel de pausa.
+boolean const_win = false;//constante que irá ajudar a acessar o painel do vencedor caso seja ativada.
+boolean const_menu = true;//constante que irá ajudar a ir até o menu.
+int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
 int R = 0, G =95, B = 96; //cor de fundo
-int tam_txt = 100; //tamanho do texto
+int tam_txt = 100, tam_subtitle = 25, tam_title = 150; //tamanho do texto
 PFont exfont;
 String tit;
 
@@ -49,6 +50,7 @@ void setup(){
   exfont = createFont("ArcadeClassic", 60, true); //Fonte escolhida para o jogo
   textFont(exfont);
   make_white_ball();
+  Pushbuttons();
 }
 
 // --- Definindo o void draw() ---
@@ -75,7 +77,7 @@ void draw(){
     
     Pushbuttons();
    
-if(!pausar){ 
+if(!const_pause){ 
       // Quando a pessoa iniciar o jogo, acontece tudo que está dentro do if
   if(start){
     textSize(tam_txt);
@@ -94,6 +96,7 @@ if(!pausar){
     
     scoreboard();
     // posicionamento dos jogadores
+    textAlign(CENTER);
     bars_moviment();
     // movimentação da bola
     ball();
@@ -297,7 +300,7 @@ void score(int var){
 }
 
 void scoreboard(){
-  textAlign(CENTER);
+
   text(points_1,(width/2)+100,tam_txt);
   text(points_2,(width/2)-100,tam_txt);
   
@@ -309,11 +312,14 @@ void reset(){
    points_2 = 0;
    winner = 0;
    make_white_ball();
+   const_pause = false;
+   const_win = false;
+   //const_menu = true;
 }
 void pause(){
   if(pause != ant_pause){
         println(winner);
-       pausar = !pausar;
+       const_pause = !const_pause;
        
      }
 }
@@ -329,56 +335,33 @@ void Pushbuttons(){
    if(pause == 1 && start){
       pause();
     }
-    if(pausar == true && win == false){
-     String x = "Pause";
-     textAlign(CENTER);
-     text(x, width/2, height/2);
-   }
+    if(const_pause && !const_win && !const_menu){
+      print_pause();
+  }
    
-   if(win == true){
-     if(winner == 1){
-     tit = "PLAYER 1 WINS";}
-     if(winner == 2){
-     tit = "PLAYER 2 WINS";}
-     textSize(tam_txt);
-     textAlign(CENTER);
-     text(tit, width/2, height/2);
-     pause();  
-     }
+   if(const_win) print_winner();
+     
+   if(const_menu && !const_win && const_pause) menu();
+
+     
 }
 
 int verify_winners(){
   if(points_1 == points_MAX){
     winner = 1;
-    win = true;
-    pausar = true;
+    const_win = true;
+    const_pause = true;
     Pushbuttons();
   }else if(points_2 == points_MAX){
     winner = 2;
-    win = true;
-    pausar = true;
+    const_win = true;
+    const_pause = true;
     Pushbuttons();
   }
   return 0;
   
 }
-/*
-void keyPressed(){
-  if(key == 'r') reset();
-  while(winner == 1){
-    String title_winner = "O Player 1 venceu!";
-    textSize(tam_txt);
-    text(title_winner, 350, 330);
-    pause();
-  }
-    while(winner == 2){
-    String title_winner = "O Player 2 venceu!";
-    textSize(tam_txt);
-    text(title_winner, 350, 330);
-    pause();
-  }
-}
-*/
+
 void make_white_ball(){
   color_ball[0] = 255;
   color_ball[1] = 255;
@@ -391,3 +374,43 @@ void make_red_ball(int intensity){
     color_ball[2] -= intensity;
   }
 }
+
+void menu(){
+     background(R, G, B);
+     String title = "PONG", subtitle = "by A lexandre Gabriel and  Vitor", options = "P LAY\nINSTRUCTIONS";
+     textSize(tam_title);
+     textAlign(CENTER);
+     text(title, width/2, height/5);
+     textSize(tam_subtitle);
+     text(subtitle, width/2, (height/5)+20);
+     textSize(tam_txt-50);
+     text(options, width/2, height/2);
+     
+     if(reset == 1){
+       const_menu = false;
+       const_pause = false;
+       }
+     else if(pause == 1){
+       const_menu = false;
+       const_pause = false;      
+       instructions();
+       }
+}
+
+void print_winner(){
+     if(winner == 1){
+     tit = "PLAYER 1 WINS";}
+     if(winner == 2){
+     tit = "PLAYER 2 WINS";}
+     textSize(tam_txt);
+     textAlign(CENTER);
+     text(tit, width/2, height/2);  
+}
+
+void print_pause(){
+     String x = "Pause";
+     textAlign(CENTER);
+     text(x, width/2, height/2);
+}
+ void instructions(){
+ }
