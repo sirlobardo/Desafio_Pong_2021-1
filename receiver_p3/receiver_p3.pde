@@ -1,5 +1,5 @@
-//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-String com_usada = "COM3";
+String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+//String com_usada = "COM3";
 //String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -11,7 +11,7 @@ int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'ne
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
 
 // Variáveis para as barras
-float height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
+float height_bar = 1000, width_bar = 10; //variaveis para representar altura e largura das barras
 float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2, winner = 0; //variáveis para representar a posicao das barras
 
 // Variáveis para abola.
@@ -169,7 +169,7 @@ void ball() {
       
   }
   //colidir com as hastes  
-  // Se (velocidade no eixo x<0 e x<20+largura da haste + metade da bola e x>20+metade da 
+  // Se (velocidade no eixo x<0(vai para esquerda) e x<20+largura da haste + metade da bola e x>20+metade da 
   //largura da haste e y>= a metade da posição da haste no eixo y e y <= a posição da 
   //haste no eixo y + metade da altura da haste)
   //OU
@@ -177,14 +177,15 @@ void ball() {
   //bola) e x<largura da tela - (20 + metade da largura da barra) e y>=posição da haste2  
   //no eixo y - metade da altura da haste e y<=posição da haste2 no eixo y + metade da 
   //altura da haste 
-  if((sp_x<0 && x<20+width_bar+size_ball/2 && x>20+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(20+width_bar+size_ball/2) && x<width-(20+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
-    if(bounce < 8){                                                    
+  if((sp_x<0 && x<10+width_bar+size_ball/2 && x>10+width_bar/2 && y>=pos_y_bar1-height_bar/2 && y<=pos_y_bar1 + height_bar/2) || (sp_x>0 && x>width-(10+width_bar+size_ball/2) && x<width-(10+width_bar/2) && y>=pos_y_bar2-height_bar/2 && y<=pos_y_bar2+height_bar/2)){
+    if(bounce < 7){                                                    
       
       sp_x = sp_x * 1.3; 
+      //sp_y = sp_y * 1.3;
       ball_spd_angular(sp_x, sp_y);
       bounce++;
       make_red_ball(30);
-      println("bounce");
+      //println("bounce");
     }
     else{
       //sp_x = -sp_x;
