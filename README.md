@@ -9,16 +9,16 @@ A organização das pastas é a seguinte:
 
 - `controller` - Contém o código com extensão *.ino* que deve ser carredado no Arduino.
 
-- `paper` - Contém os arquivos necessarios ao *Latex* para geração do artigo. 
+- `paper` - Contém os arquivos necessários ao *Latex* para geração do artigo. 
   
 - `resources` - Arquivos de suporte geral.
 
-- `receiver_p3` - Contém os arquivos de apoio (fonte e trilha sonora) ao código do *Processing 3*.
+- `receiver_p3` - Contém o código do *Processing 3* e seus arquivos de apoio (fonte das letras e trilha sonora).
 
 ## Instalação
-Para execução do projeto são necessarios compiladores que trabalhem com arquivos *.ino* e *.pde*.
+Para execução do projeto são necessários compiladores que trabalhem com arquivos *.ino* e *.pde*.
 
-Também é necessaria a biblioteca *Sound* do *processing 3*
+Também é necessária a biblioteca *Sound* do *processing 3*
 
 Para fazer o download deste repositório basta clonar numa pasta de sua `preferência`.
 
