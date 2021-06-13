@@ -1,5 +1,5 @@
-String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-//String com_usada = "COM3";
+//String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
+String com_usada = "COM3";
 //String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
@@ -11,7 +11,7 @@ int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'ne
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
 
 // Variáveis para as barras
-float height_bar = 1000, width_bar = 10; //variaveis para representar altura e largura das barras
+float height_bar = 200, width_bar = 10; //variaveis para representar altura e largura das barras
 float pos_y_bar1, pos_y_bar2, pos_x_bar1, pos_x_bar2, winner = 0; //variáveis para representar a posicao das barras
 
 // Variáveis para abola.
