@@ -1,6 +1,6 @@
 # Desafio Pong - 2021.1
 
-![banner](https://github.com/GabrielCalmon/Pong_AV3/tree/main/resources/banner.PNG?raw=true)
+![banner](https://github.com/GabrielCalmon/Pong_AV3/blob/main/resources/banner.PNG?raw=true)
 
 Este repositório foi criado para o desenvolvimento do desafio da AV3 da disciplina **Sistemas Embarcados**
 
