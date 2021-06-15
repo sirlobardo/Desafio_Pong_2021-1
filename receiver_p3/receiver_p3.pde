@@ -1,6 +1,6 @@
 //String com_usada = "/dev/ttyUSB0";    //Defina a porta em que o Arduino está conectada
-String com_usada = "COM3";
-//String com_usada = "/dev/ttyACM0";
+//String com_usada = "COM3";
+String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
 Serial Porta;     // Porta COM que o Arduino está conectado.
@@ -30,7 +30,7 @@ boolean init_start = true;
 boolean const_pause = true;//constante que irá ajudar acessar o painel de pausa.
 boolean const_win = false;//constante que irá ajudar a acessar o painel do vencedor caso seja ativada.
 boolean const_menu = true;//constante que irá ajudar a ir até o menu.
-int points_1 = 0, points_2 = 0, points_MAX = 1; //variáveis de pontuação.
+int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
@@ -52,9 +52,9 @@ void setup(){
   make_white_ball();
   Pushbuttons();
   delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
-  song = new SoundFile(this, "Arcade Login theme.mp3");
-  song.play();
-  song.loop();
+  //song = new SoundFile(this, "Arcade Login theme.mp3");
+  //song.play();
+  //song.loop();
 }
 
 // --- Definindo o void draw() ---
@@ -382,7 +382,7 @@ void make_red_ball(int intensity){
 
 void menu(){
      background(R, G, B);
-     String title = "PONG", subtitle = "by A lexandre Gabriel and  Vitor", options = "P LAY\nINSTRUCTIONS";
+     String title = "PONG", subtitle = "by A lexandre Gabriel and  Vitor", options = "PRESSIONE  QUALQUER  TEC LA \nPARA  INICIAR  O  JOGO";
      textSize(tam_title);
      textAlign(CENTER);
      text(title, width/2, height/5);
@@ -398,7 +398,7 @@ void menu(){
      else if(pause == 1){
        const_menu = false;
        const_pause = false;      
-       instructions();
+       
        }
 }
 
@@ -417,5 +417,3 @@ void print_pause(){
      textAlign(CENTER);
      text(x, width/2, height/2);
 }
- void instructions(){
- }
