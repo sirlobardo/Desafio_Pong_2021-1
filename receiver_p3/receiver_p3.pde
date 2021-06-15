@@ -3,9 +3,10 @@
 String com_usada = "/dev/ttyACM0";
 // --- Definindo as Variáveis ---
 import processing.serial.*;  // Ativando a comunicação serial entre o Arduino e o Processing
-Serial Porta;     // Porta COM que o Arduino está conectado.
+Serial Porta;     // Porta que o Arduino está conectado.
 import processing.sound.*;
 SoundFile song;
+
 // Variáveis para armazenar os valores recebidos pela Serial    
 int position[]  = new int[4];  // Vetor para guardar os valores recebidos; o 'new int' foi usado para impedir que o vetor seja inicializado nulo
 int pot_left, pot_right, pause, reset;  // Armazenar a posição do jogador na tela.
@@ -20,8 +21,6 @@ float x,y, sp_x, sp_y, lim_sp_s = 9.3, lim_sp_i = -9.3;// Variaveis para trabalh
 int bounce; //Variável para saber quando a tela está rebatendo nas bordas e nas hastes.
 int color_ball[] = new int[3];        
 float init_x,init_y;// Variáveis para trabalhar com as coord da bola na tela.
-
-//Jogar para encontrar valores ideias
 int angulos[] = {90, 75, 60, 45};  //Angulos de rebatimento, ordenados do centro para as bordas.
 
 // Variáveis de estado do jogo
@@ -30,11 +29,11 @@ boolean init_start = true;
 boolean const_pause = true;//constante que irá ajudar acessar o painel de pausa.
 boolean const_win = false;//constante que irá ajudar a acessar o painel do vencedor caso seja ativada.
 boolean const_menu = true;//constante que irá ajudar a ir até o menu.
-int points_1 = 0, points_2 = 0, points_MAX = 7; //variáveis de pontuação.
+int points_1 = 0, points_2 = 0, points_MAX = 5; //variáveis de pontuação.
 int ant_pause;
 
 //variáveis de design
-int R = 0, G =95, B = 96; //cor de fundo
+int R = 0, G = 95, B = 96; //cor de fundo
 int tam_txt = 100, tam_subtitle = 25, tam_title = 150; //tamanho do texto
 PFont exfont;
 String tit;
@@ -118,7 +117,7 @@ if(!const_pause){
 // padrão de envio: pot1-pot2-pause-reset\n
 
 void serialEvent (Serial Porta) {
-  String msg = Porta.readStringUntil('\n');  //Continuara lendo ate encontrar a quebra de linha
+  String msg = Porta.readStringUntil('\n');  
  
   if (msg != null) {
     
@@ -126,9 +125,7 @@ void serialEvent (Serial Porta) {
     msg = trim(msg);
     
     // Salva os dados na forma de inteiros
-    position = int(split(msg,'-'));    //Retorna um vetor formado pela separacao da string em palavras marcadas pelo '-'
-    
-    //println(msg);
+    position = int(split(msg,'-'));    
   }
 }
 
@@ -262,8 +259,6 @@ void ball_spd_angular(float ant_sp_x, float ant_sp_y){
     sp_x = -sp_x;   //Deve ser negativo para inverter o sentido da bola (em direção ao lado esquerdo do campo)
     sp_y = positive_or_negative(ant_sp_y) * sp_y;    //'Recupera' o sinal inicial da velocidade y, já que todos os valores dos calculos são sempre positivos
   }
-  
-  
 }
 
 // Função que controla o sentido de movimentação da bola no inicio do jogo.
