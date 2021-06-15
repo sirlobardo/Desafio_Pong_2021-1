@@ -85,12 +85,12 @@ joao.mendes@aln.senaicimatec.edu.br}
 \maketitle
 
 \begin{abstract}
----
+The present paper, aims to develop the classic game pong. The construction was done using the Processing platform, which, integrated with the Arduino IDE, made it possible to access and send the data, read by the Arduino UNO, from the Potentiometers and Pushbottons. However, the graphical interface was fully completed giving life to the famous Pong.
 \end{abstract}
 
 \begin{IEEEkeywords}
 % Ver se vai deixar esse ou mudar
-Processing 3, Arduino, Pong, Maker, Aprendizagem Baseada em Projetos
+Processing, Arduino, Pong, Arduino IDE, Potentiometers, Pushbottons
 \end{IEEEkeywords}
 
 \section{Introdução}
@@ -153,7 +153,7 @@ Um potenciômetro é um componente eletrônico que possui uma resistência inter
 \end{figure}
 
 \section{Esquematização do Circuito}
-Para uma melhor didática de como foram feitas as conexões dos pontenciômetros e pushbottons ao arduino, foi demonstrado no Tinkecad conforme a imagem ~\ref{fig:esquema}. As ligações dos potênciomentro foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os pushbottons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND. 
+Para uma melhor didática de como foram feitas as conexões dos pontenciômetros e pushbottons ao arduino, foi demonstrado no Tinkecad \cite{Tinkercad} conforme a imagem ~\ref{fig:esquema}. As ligações dos potênciomentro foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os pushbottons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND. 
 \begin{figure}[htbp]
 \centerline{
     \includegraphics[width= 6cm]{images/Tinkercad.jpeg}
@@ -339,9 +339,31 @@ void Pushbuttons(){
      
 }
 \end{lstlisting}
+\section{Interfaces do Jogo}
+\begin{figure}[htbp]
+\centerline{
+    \includegraphics[width= 6cm]{images/Menu.png}
+    }
+\caption{Menu do Jogo.}
+\label{fig:arduino}
+\end{figure}
+\begin{figure}[htbp]
+\centerline{
+    \includegraphics[width= 6cm]{images/Jogo.png}
+    }
+\caption{Jogo.}
+\label{fig:arduino}
+\end{figure}
+\begin{figure}[htbp]
+\centerline{
+    \includegraphics[width= 6cm]{images/Win.png}
+    }
+\caption{Tela do vencedor.}
+\label{fig:arduino}
+\end{figure}
 
 \section*{Considerações Finais}
-Diante do supracitado,  através do Arduino e seus componentes interligados a IDE Processing foi possível construir o famoso e clássico jogo Pong. Dessa maneira, adquiriu-se conhecimentos mais aprofundados da plataforma Processing tornando possível a criação de toda interface gráfica, onde, foi necessária o auxílio da documentação para o entendimento do funcionamento de cada função, que torna a liguagem Processing, baseada em Java, única e acessível até mesmos a profissionais que não são da área como, por exemplo, Designers.
+Diante do supracitado,  através do Arduino e seus componentes interligados a IDE Processing foi possível construir o clássico jogo Pong. Dessa maneira, adquiriu-se conhecimentos mais aprofundados da plataforma tornando possível a criação de toda interface gráfica, onde, foi necessária o auxílio da documentação para o entendimento do funcionamento de cada função, que torna a liguagem, baseada em Java, única e acessível até mesmos a profissionais que não são da área como, por exemplo, Designers.
 
 Durante o desenvolvimento do presente projeto também foi possível aplicar os conhecimento adquiridos ao longo da disciplina "Sistemas Embarcados", tais como utilização de sensores e atuadores, leitura de sinais analógicos e digitais, comunicação entre componentes, criação de representações do mundo físico no mundo digital e muitos outros assuntos.
 
