@@ -1,7 +1,7 @@
 # Desafio Pong - 2021.1
 
 ## Introdução
-![banner](https://github.com/GabrielCalmon/Pong_AV3/blob/main/resources/banner.PNG?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/banner.PNG?raw=true)
 
 Este repositório foi criado para o desenvolvimento do desafio da AV3 da disciplina **Sistemas Embarcados** referente ao período letivo de 2021.1
 
@@ -23,7 +23,7 @@ Para execução do jogo na sua máquina siga o passo-a-passo de instalação con
 Para fazer o download deste repositório basta clonar numa pasta de sua `preferência`.
 
 ```
-$ git clone https://github.com/GabrielCalmon/Pong_AV3
+$ git clone https://github.com/GabrielCalmon/Desafio_Pong_2021-1
 ``` 
 
 ### Arduino
@@ -45,14 +45,14 @@ Também é necessária a instalação da biblioteca *Sound* do *processing 3*, c
 - 5 - Busque pela biblioteca chamada "Sound" e que tenha como *Author* (autor) "The Processing Foundation"
 - 6 - Clique em "Install" (instalar)
 
-![banner](https://github.com/GabrielCalmon/Pong_AV3/blob/main/resources/processing-bib-1.PNG?raw=true)
-![banner](https://github.com/GabrielCalmon/Pong_AV3/blob/main/resources/processing-bib-2.PNG?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/processing-bib-1.PNG?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/processing-bib-2.PNG?raw=true)
 
 Por fim abra o arquivo *receiver_p3.pde* localizado na pasta ```Desafio_Pong_2021-1/receiver_p3```, localize a variável do tipo String chamada "com_usada" e altere o texto entre aspas pelo nome porta do seu computador a qual o Arduino está conectado.
 
 ```String com_usada = "NOME DA PORTA";```
 
 Caso não saiba o nome da porta utilizada abra a IDE Arduino e no canto inferior direito da tela estará escrito a informação desejada, conforme a imagem abaixo.
-![banner](https://github.com/GabrielCalmon/Pong_AV3/blob/main/resources/arduino-porta.PNG?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/arduino-porta.PNG?raw=true)
 
 *“Fazer ou não fazer. Tentativa não há”* - Mestre Yoda
