@@ -1,20 +1,17 @@
 Título: Serenity
 Subtitle: Um guia na escuridão do universo
 
-##Introdução
+##Introdução -> Vitor
 Neste tópico devemos ter no mínimo três parágrafos:
 - parágrafo introdutório
 - descriçao suscinta do projeto apresentanto o objetivo principal do projeto, data de início e prazo para a realização.
 - justificativa
 
-##Detalhamento
+##Detalhamento -> Vitor e Alexandre
 Neste tópico devemos descrever o projeto mostrando os componenntes principais e suas funcionalidades.
 
-##Simulação
+##Simulação -> Alexandre
 Neste tópico inserir as simulações do projeto.
-
-##Live Action
-Neste tópico o principal é mostrar a realização do projeto.
 
 ###Equipe de desenvolvimento
 Mostrar a equipe de desenvolvimento.
