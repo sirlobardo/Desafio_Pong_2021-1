@@ -50,10 +50,9 @@ void setup(){
   textFont(exfont);
   make_white_ball();
   Pushbuttons();
-  delay(1100); //Tempo de conexão entre o Arduino e o processing (neese instervalo ele só recebe 0)
-  //song = new SoundFile(this, "Arcade Login theme.mp3");
-  //song.play();
-  //song.loop();
+  song = new SoundFile(this, "Arcade Login theme.mp3");
+  song.play();
+  song.loop();
 }
 
 // --- Definindo o void draw() ---
