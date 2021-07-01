@@ -69,18 +69,18 @@ Caso não saiba o nome da porta utilizada abra a IDE Arduino e no canto inferior
 Caso deseje falar com os desenvolvedores do projeto seguem informações para contato:
 
 **Alexandre Adonai**
-- Email: 
+- Email: alexandre.s@aln.senaicimatec.edu.br
 - GitHub: https://github.com/Alexandreaags
 
 **Gabriel Calmon**
-- Email:joao.calmon@aln.senaicimatec.edu.br
+- Email: joao.calmon@aln.senaicimatec.edu.br
 - GitHub: https://github.com/GabrielCalmon
 - Lattes: http://lattes.cnpq.br/3714599132684846
 
 **Vitor Mendes**
-- Email:
+- Email: joao.mendes@aln.senaicimatec.edu.br
 - GitHub: https://github.com/vitorsmends
-- Latter:
-- LinkedIn: 
+- Lattes: http://lattes.cnpq.br/1253937974490834
+- LinkedIn: https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5
 
 *“Fazer ou não fazer. Tentativa não há”* - Mestre Yoda
