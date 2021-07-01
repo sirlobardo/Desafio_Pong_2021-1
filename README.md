@@ -52,7 +52,7 @@ Também é necessária a instalação da biblioteca *Sound* do *processing 3*, c
 ### Hardware
 O esquema de ligação necessário ao projeto pode ser visto na imagem abaixo:
 
-![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/circuito-ligacoes.png?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/circuito-ligacoes.jpeg?raw=true)
 
 ### Software
 Abra o arquivo *controllers.ino* localizado na pasta ```Desafio_Pong_2021-1/controllers``` e carregue-o no seu Arduino
@@ -63,7 +63,7 @@ Em seguida abra o arquivo *receiver_p3.pde* localizado na pasta ```Desafio_Pong_
 
 Caso não saiba o nome da porta utilizada abra a IDE Arduino e no canto inferior direito da tela estará escrito a informação desejada, conforme a imagem abaixo.
 
-![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/arduino-porta.jpeg?raw=true)
+![banner](https://github.com/GabrielCalmon/Desafio_Pong_2021-1/blob/main/resources/arduino-porta.png?raw=true)
 
 ## Informações para Contato
 Caso deseje falar com os desenvolvedores do projeto seguem informações para contato:
