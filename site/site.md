@@ -1,23 +1,42 @@
-Título: Serenity
-Subtitle: Um guia na escuridão do universo
+# PongZ
+Uma releitura do pong para os tempos atuais.
 
-##Introdução -> Vitor
-Neste tópico devemos ter no mínimo três parágrafos:
-- parágrafo introdutório
-- descriçao suscinta do projeto apresentanto o objetivo principal do projeto, data de início e prazo para a realização.
-- justificativa
+## Introdução
+### Um pouco de história.
+O Pong é considerado o primeiro jogo da história em formato de vídeo a ser lucrativo. Criado por  Nolan Bushnell e Ted Dabney, o jogo se inspira no clássico jogo de tênis de dois jogadores em que as hastes/barras simulam as raquetes, e a bola da mesma forma que em uma partida de tênis, percorre a quadra até um dos jogadores não conseguir rebater. A versão clássica do PONG consiste em um console ligado a um monitor, sendo as hastes movidas por moedas.
+### O PongZ
+Nesta versão que adotamos o nome de PongZ, sendo "Pong" o nome do jogo original e "Z" o termo que remete o nascimento da geração dos desenvolvedores. Neste projeto resolvemos remodelar o design, mas sem alterar a essência do jogo, trazendo uma clássica trilha sonora dos anos 70. Além disso, no lugar das moedas que moviam as hastes temos potenciômetros, e um arduino que faz a interpretação desses dados e envia para o computador através da porta USB, contendo também informações dos botões push buttons que permitem o jogador controlar pausar e resetar o jogo.
+### Justificativa
+O PongZ é um projeto criado dentro da disciplina de Sistemas Embarcados no curso de Engenharia Elétrica do Senai Cimatec ministrado pelo Prof. Marco Reis, com intuito de explorar as habilidades desenvolvidas durante a disciplina, como fazer a interação entre software e hardware através de comunicação serial e manipulação de dados capturados em um sistema embarcados.
 
-##Detalhamento -> Vitor e Alexandre
+## Detalhamento
 Neste tópico devemos descrever o projeto mostrando os componenntes principais e suas funcionalidades.
 
-##Simulação -> Alexandre
+## Simulação
 Neste tópico inserir as simulações do projeto.
 
-###Equipe de desenvolvimento
-Mostrar a equipe de desenvolvimento.
-Não esqueça do orientador.
+## Equipe de Desenvolvimento
+### **Orientador**
+**Prof. Marco Reis**
+- Email: marco.reis@fieb.org.br
+- GitHub https://github.com/mhar-vell
 
-###Resumo do Projeto
+**Alexandre Adonai**
+- Email: alexandre.s@aln.senaicimatec.edu.br
+- GitHub: https://github.com/Alexandreaags
+
+**Gabriel Calmon**
+- Email: joao.calmon@aln.senaicimatec.edu.br
+- GitHub: https://github.com/GabrielCalmon
+- Lattes: http://lattes.cnpq.br/3714599132684846
+
+**Vitor Mendes**
+- Email: joao.mendes@aln.senaicimatec.edu.br
+- GitHub: https://github.com/vitorsmends
+- Lattes: http://lattes.cnpq.br/1253937974490834
+- LinkedIn: https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5
+
+### Resumo do Projeto
 1. Categoria:
 2. Prazo:
 3. Data de início:
