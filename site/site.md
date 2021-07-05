@@ -13,7 +13,17 @@ O PongZ é um projeto criado dentro da disciplina de Sistemas Embarcados no curs
 Neste tópico devemos descrever o projeto mostrando os componenntes principais e suas funcionalidades.
 
 ## Simulação
-Neste tópico inserir as simulações do projeto.
+Para uma melhor didática de como foram feitas as conexões dos pontenciômetros e pushbottons ao arduino, foi demonstrado no Tinkecad conforme a imagem abaixo. As ligações dos potênciomentro foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os pushbottons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND.
+
+![Bobst](https://i.imgur.com/rbHTpYk.jpg[/img])
+
+O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstrando a jogabilidade e suas funções.
+
+<div class="embed-responsive embed-responsive-16by9">
+
+<iframe width="415" height="315" src="https://www.youtube.com/embed/Yl8Gpslcpxw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
 
 ## Equipe de Desenvolvimento
 ### **Orientador**
