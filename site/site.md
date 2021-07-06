@@ -35,7 +35,7 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 
 </div>
 
-![Bobst]()
+![Bobst](https://i.imgur.com/zk8ti6l.png[/img])
 
 # Equipe de Desenvolvimento
 ### **Orientador**
