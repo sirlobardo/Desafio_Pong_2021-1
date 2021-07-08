@@ -14,7 +14,8 @@ O PongZ é um projeto criado dentro da disciplina de Sistemas Embarcados, minist
 
 ## Detalhamento
 <div style="text-align: justify"> 
-Neste tópico devemos descrever o projeto mostrando os componentes principais e suas funcionalidades.<p></div>
+O hardware do projeto conta com dois botões, dois potenciômetros e um arduino. Quanto ao software, o arduino foi programado para monitorar os sensores e enviar estes dados através da comunicação serial, enquanto um algoritmo em Processing 3 foi responsável pela interface do jogo.
+<p></div>
 
 ## Simulação
 <div style="text-align: justify"> 
@@ -61,7 +62,7 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 - LinkedIn: https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5
 
 ### Resumo do Projeto
-1. Categoria:
+1. Categoria: Sistemas Embarcados
 2. Prazo:
 3. Data de início: 25/05/2021
 4. Data de término: 
