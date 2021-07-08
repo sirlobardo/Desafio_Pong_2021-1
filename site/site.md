@@ -4,11 +4,13 @@ Uma releitura do pong para os tempos atuais.
 ## Introdução
 ### Um pouco de história.
 <div style="text-align: justify"> 
-O Pong é considerado o primeiro jogo da história em formato de vídeo a ser lucrativo. Criado por  Nolan Bushnell e Ted Dabney, o jogo se inspira no clássico jogo de tênis de dois jogadores em que as hastes/barras simulam as raquetes, e a bola da mesma forma que em uma partida de tênis, percorre a quadra até um dos jogadores não conseguir rebater. A versão clássica do PONG consiste em um console ligado a um monitor, sendo as hastes movidas por moedas.<p>
+O Pong é considerado o primeiro jogo da história em formato de vídeo a ser lucrativo. Criado por Nolan Bushnell e Ted Dabney, o jogo se inspira no clássico jogo de tênis de dois jogadores no qual as hastes/barras simulam as raquetes, e a bola da mesma forma que em uma partida de tênis, percorre a quadra de uma extremidade à outra até um dos jogadores não conseguir rebate-la. A versão clássica do PONG consiste em um console ligado a um monitor, sendo as hastes movidas por moedas.<p>
+
 ### O PongZ
-Nesta versão que adotamos o nome de PongZ, sendo "Pong" o nome do jogo original e "Z" o termo que remete o nascimento da geração dos desenvolvedores. Neste projeto resolvemos remodelar o design, mas sem alterar a essência do jogo, trazendo uma clássica trilha sonora dos anos 70. Além disso, no lugar das moedas que moviam as hastes temos potenciômetros, e um arduino que faz a interpretação desses dados e envia para o computador através da porta USB, contendo também informações dos botões push buttons que permitem o jogador controlar pausar e resetar o jogo.<p>
+Nesta versão adotamos o nome de PongZ, sendo "Pong" o nome do jogo original e "Z" o termo que remete ao nascimento da geração dos desenvolvedores. Neste projeto resolvemos remodelar o design, mas sem alterar a essência do jogo, mantendo as regras originais e trazendo uma clássica trilha sonora dos anos 70. Além disso, no lugar das moedas que moviam as hastes temos potenciômetros, e um arduino que faz a interpretação desses dados e envia para o computador através da porta USB, enviando também informações dos botões push buttons que permitem ao jogador pausar ou resetar a partida.<p>
+
 ### Justificativa
-O PongZ é um projeto criado dentro da disciplina de Sistemas Embarcados no curso de Engenharia Elétrica do SENAI CIMATEC ministrado pelo Prof. Marco Reis, com intuito de explorar as habilidades desenvolvidas durante a disciplina, como fazer a interação entre software e hardware através de comunicação serial e manipulação de dados capturados em um sistema embarcados.<p></div>
+O PongZ é um projeto criado dentro da disciplina de Sistemas Embarcados, ministrada pelo Prof. Marco Reis, no curso de Engenharia Elétrica do SENAI CIMATEC com intuito de explorar as habilidades desenvolvidas durante a disciplina, tais como a utilização de sensores e atuadores, leitura de sinais analógicos e digitais, comunicação entre componentes, fazer a interação entre software e hardware através de comunicação serial e manipulação de dados capturados em um sistema embarcado.<p></div>
 
 ## Detalhamento
 <div style="text-align: justify"> 
@@ -16,7 +18,7 @@ Neste tópico devemos descrever o projeto mostrando os componentes principais e 
 
 ## Simulação
 <div style="text-align: justify"> 
-Para uma melhor didática de como foram feitas as conexões dos potenciômetros e push buttons ao arduino, foi demonstrado no Tinkercad conforme a imagem abaixo. As ligações dos potenciômetros foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os push buttons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND.<p></div>
+Para uma melhor didática de como foram feitas as conexões dos potenciômetros e push buttons ao arduino, foi construído um esquema de ligação no Tinkercad, conforme a imagem abaixo. As ligações dos potenciômetros foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os push buttons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND.<p></div>
 <br/>
 <br/>
 
@@ -61,9 +63,9 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 ### Resumo do Projeto
 1. Categoria:
 2. Prazo:
-3. Data de início:
-4. Data de término:
-5. Repositório URL:
+3. Data de início: 25/05/2021
+4. Data de término: 
+5. Repositório URL: https://github.com/GabrielCalmon/Desafio_Pong_2021-1
 6. Sponsor:
 7. Recursos materiais: US$
 8. Apresentação URL:
