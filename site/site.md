@@ -38,7 +38,6 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 
 </div>
 
-![Bobst](https://i.imgur.com/zk8ti6l.png[/img])
 
 # Equipe de Desenvolvimento
 ### **Orientador**
@@ -60,6 +59,50 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 - GitHub: https://github.com/vitorsmends
 - Lattes: http://lattes.cnpq.br/1253937974490834
 - LinkedIn: https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5
+
+<br>
+<!--equipe-->
+
+<center><h3 class="post-title">Equipe de desenvolvimento</h3><br/></center>
+<div class="row">
+  <div class=" col-xl-auto offset-xl-0 col-lg-4 offset-lg-0">
+    <table class="table-borderless highlight">
+      <thead>
+        <tr>
+          <th><center><img src="https://i.imgur.com/3ttQNPA.png[/img]" width="100" alt="alexandre" class="img-fluid rounded-circle" /></center></th>
+          <th></th>
+          <th><center><img src="https://i.imgur.com/U2jY6Uf.png[/img]" width="100" alt="joaogabriel" class="img-fluid rounded-circle"/></center></th>
+          <th></th>
+          <th><center><img src="https://i.imgur.com/zk8ti6l.png[/img]" width="100" alt="vitor" class="img-fluid rounded-circle"/></center></th>
+          <th></th>
+           <th><center><img src="" width="100" alt="marco" class="img-fluid rounded-circle"/></center></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="font-weight-bolder" style="text-align: center margin-top: 0">
+         <td width="25.00%">Alexandre Adonai</td>
+          <td></td>
+          <td width="25.00%">João Gabriel Calmon</td>
+          <td></td>
+          <td width="25.00%">João Vítor Mendes</td>
+          <td></td>
+          <td width="25.00%">Marco Reis</td>
+        </tr>
+        <tr style="text-align: center" >
+          <td style="vertical-align: top"><small>Graduando em Eng. Elétrica.</small></td>
+          <td></td>
+          <td style="vertical-align: top"><small>Graduando em Eng. Elétrica.</small></td>
+          <td></td>
+          <td style="vertical-align: top"><small>Graduando em Eng. Elétrica.</small></td>
+          <td></td>
+          <td style="vertical-align: top"><small>Pesquisador Sênior do projeto <br>Mestre em Engenharia de Produção e Eng. Eletricista.</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
 
 ### Resumo do Projeto
 1. Categoria: Sistemas Embarcados
