@@ -5,10 +5,8 @@ subtitle: Uma releitura do pong para os tempos atuais.
 cover-img: https://i.imgur.com/9AJowrB.png[/img]
 ---
 
-# PongZ
-Uma releitura do pong para os tempos atuais.
-
 ## Introdução
+
 ### Um pouco de história.
 <div style="text-align: justify"> 
 O Pong é considerado o primeiro jogo da história em formato de vídeo a ser lucrativo. Criado por  Nolan Bushnell e Ted Dabney, o jogo se inspira no clássico jogo de tênis de dois jogadores em que as hastes/barras simulam as raquetes, e a bola da mesma forma que em uma partida de tênis, percorre a quadra até um dos jogadores não conseguir rebater. A versão clássica do PONG consiste em um console ligado a um monitor, sendo as hastes movidas por moedas.
@@ -34,7 +32,6 @@ O hardware do projeto conta com dois botões, dois potenciômetros e um arduino.
 Para uma melhor didática de como foram feitas as conexões dos potenciômetros e push buttons ao arduino, foi demonstrado no Tinkercad conforme a imagem abaixo. As ligações dos potenciômetros foram, respectivamente, o terminal 1 ligado ao GND, o terminal 2 aos pinos analógicos A0 e A2 e o terminal 3 ligado ao 5V. Já os push buttons, foram ligados, respectivamente, o terminal 1B aos pinos digitais 9 e 8 e o terminal 2B ao GND.
 </div>
 
-<br/>
 
 <div style="text-align: center"> 
 <img src="https://i.imgur.com/3AbOHrB.png[/img]" alt="drawing" width="500"/>
@@ -45,7 +42,6 @@ Figura 1. <br/>
 O circuito acima foi projetado através do TinkerCAD.<br/>
 Fonte: Autoria Própria.</div>
 <br/>
-<br/>
 O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstrando a jogabilidade e suas funções.
 
 <div class="embed-responsive embed-responsive-16by9">
@@ -54,43 +50,9 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 
 </div>
 
-<<<<<<< HEAD
-=======
-<!-- <img src="/assets/img/arduino_circuito.png" alt="drawing" width="320"/> -->
-![Arduino migué](/assets/img/arduino_circuito.png){: .mx-auto.d-block :}
+<br/>
+<br/>
 
-<div style="text-align: left"> 
-<h1 id="equipe-de-desenvolvimento">Equipe de Desenvolvimento</h1>
-<h3 id="-orientador-"><strong>Orientador</strong></h3>
-<p><strong>Prof. Marco Reis</strong></p>
-<ul>
-<li>Email: marco.reis@fieb.org.br</li>
-<li>GitHub <a href="https://github.com/mhar-vell">https://github.com/mhar-vell</a></li>
-</ul>
-<p><strong>Alexandre Adonai</strong></p>
-<ul>
-<li>Email: alexandre.s@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/Alexandreaags">https://github.com/Alexandreaags</a></li>
-</ul>
-<p><strong>Gabriel Calmon</strong></p>
-<ul>
-<li>Email: joao.calmon@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/GabrielCalmon">https://github.com/GabrielCalmon</a></li>
-<li>Lattes: <a href="http://lattes.cnpq.br/3714599132684846">http://lattes.cnpq.br/3714599132684846</a></li>
-</ul>
-<p><strong>Vitor Mendes</strong></p>
-<ul>
-<li>Email: joao.mendes@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/vitorsmends">https://github.com/vitorsmends</a></li>
-<li>Lattes: <a href="http://lattes.cnpq.br/1253937974490834">http://lattes.cnpq.br/1253937974490834</a></li>
-<li>LinkedIn: <a href="https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5">https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5</a></li>
-</ul>
-<h3 id="resumo-do-projeto">Resumo do Projeto</h3>
-
-<br>
-<!--equipe-->
-
->>>>>>> ba1cf0758370f49ae40200f44fc9ebcc745ac1ee
 <center><h3 class="post-title">Equipe de desenvolvimento</h3><br/></center>
 <div class="row">
   <div class=" col-xl-auto offset-xl-0 col-lg-4 offset-lg-0">
@@ -160,21 +122,14 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
 
 <br>
 
-<<<<<<< HEAD
 ## Resumo do Projeto
-=======
->>>>>>> ba1cf0758370f49ae40200f44fc9ebcc745ac1ee
 <ol>
 <li>Categoria: Sistemas Embarcados</li>
 <li>Prazo: 20 dias</li>
 <li>Data de início: 25/05/2021</li>
 <li>Data de término: 14/06/2021</li>
 <li>Repositório URL: https://github.com/GabrielCalmon/Desafio_Pong_2021-1</li>
-<<<<<<< HEAD
-<li>Sponsor: Senai Cimatec </li>
-=======
 <li>Sponsor: Sem financiamento </li>
->>>>>>> ba1cf0758370f49ae40200f44fc9ebcc745ac1ee
 <li>Recursos materiais: US$ 42.00</li>
 <li>Apresentação URL: https://drive.google.com/drive/folders/188Juz5FEUqrq5PzuuWtxbnuLv0CRaUem?usp=sharing</li>
 <li>Report URL:</li>
