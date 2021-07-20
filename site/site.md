@@ -42,6 +42,9 @@ Figura 1. <br/>
 O circuito acima foi projetado através do TinkerCAD.<br/>
 Fonte: Autoria Própria.</div>
 <br/>
+
+## Live Game
+
 O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstrando a jogabilidade e suas funções.
 
 <div class="embed-responsive embed-responsive-16by9">
@@ -91,35 +94,6 @@ O vídeo abaixo tem como objetivo representar a versão final do jogo, demonstra
     </table>
   </div>
 </div>
-<br>
-
-<div style="text-align: left"> 
-<p><strong>Alexandre Adonai</strong></p>
-<ul>
-<li>Email: alexandre.s@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/Alexandreaags">https://github.com/Alexandreaags</a></li>
-</ul>
-<p><strong>Gabriel Calmon</strong></p>
-<ul>
-<li>Email: joao.calmon@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/GabrielCalmon">https://github.com/GabrielCalmon</a></li>
-<li>Lattes: <a href="http://lattes.cnpq.br/3714599132684846">http://lattes.cnpq.br/3714599132684846</a></li>
-</ul>
-<p><strong>Vitor Mendes</strong></p>
-<ul>
-<li>Email: joao.mendes@aln.senaicimatec.edu.br</li>
-<li>GitHub: <a href="https://github.com/vitorsmends">https://github.com/vitorsmends</a></li>
-<li>Lattes: <a href="http://lattes.cnpq.br/1253937974490834">http://lattes.cnpq.br/1253937974490834</a></li>
-<li>LinkedIn: <a href="https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5">https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-s-mendes-aa2ab71b5</a></li>
-</ul>
-
-<h3 id="-orientador-"><strong>Orientador</strong></h3>
-<p><strong>Prof. Marco Reis</strong></p>
-<ul>
-<li>Email: marco.reis@fieb.org.br</li>
-<li>GitHub <a href="https://github.com/mhar-vell">https://github.com/mhar-vell</a></li>
-</ul>
-
 <br>
 
 ## Resumo do Projeto
